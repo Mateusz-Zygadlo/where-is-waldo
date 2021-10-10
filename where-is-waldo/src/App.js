@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import Waldo from './waldo.png';
+import './App.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'
 
@@ -13,9 +16,33 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 
 const App = () => {
+  const [winner, setWinner] = useState(false);
+
+  const findWaldo = (x, y) => {
+    if(x > 450 && x < 510){
+      if(y > 70 && y < 200){
+        setWinner(true)
+        
+        return;
+      }
+    }
+
+    return 'missed';
+  }
+
+  const finalFunction = (e) => {
+    if(findWaldo(e.clientX, e.clientY) == 'missed'){
+      console.log(true);
+    }
+  }
+
   return(
-    <div>
-      <h1>hello world</h1>
+    <div className={winner ? 'winnerBackground' : null}>
+      {winner ? <div className="winner">You are winner</div> : 
+        <div className="bg" onClick={(e)=>{finalFunction(e)}}>
+          <img src={Waldo} alt="Nature" className="responsive" />
+        </div>
+      }
     </div>
   )
 }
