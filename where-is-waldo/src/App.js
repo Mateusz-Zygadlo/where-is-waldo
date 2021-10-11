@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Waldo from './waldo.png';
 import './App.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore';
+import Timer from './Timer.js';
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDum1S9rK1r7PVi3nhybg_7DkznOdYf5EQ",
@@ -87,14 +88,17 @@ const App = () => {
   return(
     <div className={winner ? 'winnerBackground' : null}>
       {winner ? <div className="winner">You are winner</div> : 
-        <div className="bg">
-          <img src={Waldo} alt="Nature" className="responsive" onClick={(e)=>{finalFunction(e); xAndY(e)}} />
-          <div className={visiblityMode ? 'visiblity' : 'absolute'} style={{top: positionYImg, left: positionXImg}}>
-            <div className="Waldo" onClick={(e)=>{clickBtn(e)}}>Waldo</div>
-            <div onClick={(e)=>{clickBtn(e)}}>Object 2</div>
-            <div onClick={(e)=>{clickBtn(e)}}>Element 3</div>
+        <div>
+        <Timer />
+          <div className="bg">
+            <img src={Waldo} alt="Nature" className="responsive" onClick={(e)=>{finalFunction(e); xAndY(e)}} />
+            <div className={visiblityMode ? 'visiblity' : 'absolute'} style={{top: positionYImg, left: positionXImg}}>
+              <div className="Waldo" onClick={(e)=>{clickBtn(e)}}>Waldo</div>
+              <div onClick={(e)=>{clickBtn(e)}}>Object 2</div>
+              <div onClick={(e)=>{clickBtn(e)}}>Element 3</div>
+            </div>
           </div>
-        </div>
+          </div>
       }
     </div>
   )
