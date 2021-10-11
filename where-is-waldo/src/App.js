@@ -22,7 +22,7 @@ const App = () => {
   const [positionY, setPositionY] = useState(0);
   const [positionXImg, setPositionXImg] = useState(0);
   const [positionYImg, setPositionYImg] = useState(0);
-  const [visiblityMode, setVisiblityMode] = useState(false);
+  const [visiblityMode, setVisiblityMode] = useState(true);
 
   const findWaldo = (e) => {
     const xPos = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
