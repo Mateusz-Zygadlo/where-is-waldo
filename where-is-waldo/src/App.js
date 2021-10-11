@@ -19,11 +19,16 @@ const App = () => {
   const [winner, setWinner] = useState(false);
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(0);
+  const [positionXImg, setPositionXImg] = useState(0);
+  const [positionYImg, setPositionYImg] = useState(0);
   const [visiblityMode, setVisiblityMode] = useState(false);
 
-  const findWaldo = (x, y) => {
-    if(x > 450 && x < 510){
-      if(y > 70 && y < 200){
+  const findWaldo = (e) => {
+    const xPos = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
+    const yPos = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100);
+    
+    if(xPos > 450 && xPos < 510){
+      if(yPos > 70 && yPos < 200){
         return 'Waldo';
       }
     }
@@ -32,48 +37,59 @@ const App = () => {
   }
 
   const finalFunction = (e) => {
+    const xPos = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
+    const yPos = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100);
+
+    setPositionXImg(e.clientX);
+    setPositionYImg(e.clientY);
+
     if(e.target.className == 'Waldo'){
       return;
     }else{
-      if(findWaldo(e.clientX, e.clientY) == 'Waldo'){
+      if(findWaldo(e) == 'Waldo'){
         if(e.target.className == 'Waldo'){
           setWinner(true);
         }else{
-          setPositionX(e.clientX);
-          setPositionY(e.clientY);
+          setPositionX(xPos);
+          setPositionY(yPos);
           setVisiblityMode(false);
   
           return 'missed';
         }
       }
   
-      setPositionX(e.clientX);
-      setPositionY(e.clientY);
-
+      setPositionX(xPos);
+      setPositionY(yPos);
       setVisiblityMode(false);
     }
   }
 
   const clickBtn = (e) => {
     if(e.target.className == 'Waldo'){
-      if(positionX > 450 && positionX < 510){
-        if(positionY > 70 && positionY < 200){
+      if(positionX > 46 && positionX < 51){
+        if(positionY > 13 && positionY < 36){
           setWinner(true);
           return;
         }
       }
     }
-    console.log('missed');
     setVisiblityMode(true);
     return false;
+  }
+
+  const xAndY = (e) => {
+    const xPos = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
+    const yPos = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100);
+
+    console.log('x', xPos, 'y', yPos);
   }
 
   return(
     <div className={winner ? 'winnerBackground' : null}>
       {winner ? <div className="winner">You are winner</div> : 
-        <div className="bg" onClick={(e)=>{finalFunction(e)}}>
-          <img src={Waldo} alt="Nature" className="responsive" />
-          <div className={visiblityMode ? 'visiblity' : 'absolute'} style={{top: positionY, left: positionX}}>
+        <div className="bg">
+          <img src={Waldo} alt="Nature" className="responsive" onClick={(e)=>{finalFunction(e); xAndY(e)}} />
+          <div className={visiblityMode ? 'visiblity' : 'absolute'} style={{top: positionYImg, left: positionXImg}}>
             <div className="Waldo" onClick={(e)=>{clickBtn(e)}}>Waldo</div>
             <div onClick={(e)=>{clickBtn(e)}}>Object 2</div>
             <div onClick={(e)=>{clickBtn(e)}}>Element 3</div>
