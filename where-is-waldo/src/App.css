@@ -6,6 +6,7 @@
 body{
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 .bg{
     width: 100vw;
@@ -53,7 +54,6 @@ body{
     align-items: center;
 }
 .timer{
-    width: 100vw;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -62,4 +62,55 @@ body{
 }
 .visiblityClass{
     visibility: hidden;
+}
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    font-size: 40px;
+    width: 100vw;
+    height: 50px;
+}
+.home{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-characters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+.homePage{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.homePage h1{
+    font-size: 60px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+.card{
+    width: 200px;
+    height: 100px;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.cardOne{
+    background-color: lightblue;
+}
+.gameName{
+    font-size: 30px;
+}
+.gamePlace{
+    font-size: 20px;
 }

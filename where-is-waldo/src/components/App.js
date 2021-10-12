@@ -1,20 +1,7 @@
 import React, { useState } from 'react';
-import Waldo from './Wheres-waldo-wally-google-maps-380.webp';
-import './App.css';
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import Timer from './Timer.js';
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyDum1S9rK1r7PVi3nhybg_7DkznOdYf5EQ",
-  authDomain: "where-s-waldo-77974.firebaseapp.com",
-  projectId: "where-s-waldo-77974",
-  storageBucket: "where-s-waldo-77974.appspot.com",
-  messagingSenderId: "607103542662",
-  appId: "1:607103542662:web:721f84db67270edfadf807"
-})
-
-const db = getFirestore(firebaseApp);
+import Waldo from '../Wheres-waldo-wally-google-maps-380.webp';
+import '../App.css';
+import NavBar from './Navbar';
 
 const App = () => {
   const [winner, setWinner] = useState(false);
@@ -48,7 +35,7 @@ const App = () => {
     <div className={winner ? 'winnerBackground' : null}>
       {winner ? <div className="winner">You are winner</div> : 
         <div>
-        <Timer stop={stop} />
+        <NavBar stop={stop} />
           <div className="bg">
             <img src={Waldo} alt="Nature" className="responsive" onClick={(e)=>{finalFunction(e)}} />
           </div>

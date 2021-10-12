@@ -4,7 +4,6 @@ const Timer = (props) => {
     const [seconds, setSeconds] = useState(1);
     const [minutes, setMinutes] = useState(0);
     const [addZero, setAddZero] = useState(true);
-    const [stop, setStop] = useState(false);
 
     useEffect(() => {
         const TimerInt = seconds > 0 && !props.stop && setInterval(() => {
