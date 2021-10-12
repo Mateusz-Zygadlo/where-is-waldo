@@ -3,9 +3,7 @@ import Home from "../Home";
 
 const HomePage = (props) => {
     return(
-        <div>
-            <Home {...props} />
-        </div>
+        <Home {...props} />
     )
 }
 

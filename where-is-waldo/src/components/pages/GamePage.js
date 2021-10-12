@@ -3,9 +3,7 @@ import App from '../App';
 
 const GamePage = (props) => {
     return(
-        <div>
-            <App {...props} /> 
-        </div>
+        <App {...props} /> 
     )
 }
 
