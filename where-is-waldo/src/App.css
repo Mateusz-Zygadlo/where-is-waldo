@@ -27,14 +27,6 @@ body{
     justify-content: center;
     align-items: center;
 }
-.winnerBackground{
-    width: 100vw;
-    height: 100vh;
-    background-color: pink;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .absolute{
     position: absolute;
     width: 80px;
@@ -113,4 +105,25 @@ body{
 }
 .gamePlace{
     font-size: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.winnerPageContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.winnerPage{
+    width: 400px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

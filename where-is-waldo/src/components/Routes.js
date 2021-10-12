@@ -2,9 +2,42 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import GamePage from './pages/GamePage';
-import WinnerPage from './pages/WinnerPage';
 
 const Routes = () => {
+  const [stop, setStop] = useState(false);
+  const [seconds, setSeconds] = useState(1);
+  const [minutes, setMinutes] = useState(0);
+  const [addZero, setAddZero] = useState(true);
+  const [winner, setWinner] = useState(false);
+
+  const reset = () => {
+    setSecondsFunc(1);
+    setMinutesFunc(0);
+    setAddZeroFunc(true);
+    setWinnerFunc(false);
+    setStopFunc(false);
+  }
+
+  const setSecondsFunc = (value) => {
+    setSeconds(value);
+  }
+
+  const setMinutesFunc = (value) => {
+    setMinutes(value);
+  }
+
+  const setAddZeroFunc = (value) => {
+    setAddZero(value);
+  }
+
+  const setWinnerFunc = (value) => {
+    setWinner(value);
+  }
+
+  const setStopFunc = (value) => {
+    setStop(value);
+  }
+
   return (
     <BrowserRouter>
       <Switch>
@@ -12,19 +45,23 @@ const Routes = () => {
             exact 
             path='/' 
             render={() => (
-                <HomePage />
+              <HomePage reset={reset} />
             )} />
         <Route 
             exact 
             path='/game'
             render={() => (
-                <GamePage />
-            )} />
-        <Route 
-            exact 
-            path='/winner'
-            render={() => (
-                <WinnerPage />
+                <GamePage 
+                  setWinnerFunc={setWinnerFunc} 
+                  winner={winner}
+                  setSecondsFunc={setSecondsFunc}
+                  setMinutesFunc={setMinutesFunc}
+                  setAddZeroFunc={setAddZeroFunc}
+                  seconds={seconds}
+                  minutes={minutes}
+                  addZero={addZero}
+                  stop={stop}
+                  setStopFunc={setStopFunc} />
             )} />
       </Switch>
     </BrowserRouter>

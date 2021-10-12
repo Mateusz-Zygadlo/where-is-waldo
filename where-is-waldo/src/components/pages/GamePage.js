@@ -1,10 +1,10 @@
 import React from 'react';
 import App from '../App';
 
-const GamePage = () => {
+const GamePage = (props) => {
     return(
         <div>
-            <App /> 
+            <App {...props} /> 
         </div>
     )
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import Home from "../Home";
 
-const HomePage = () => {
+const HomePage = (props) => {
     return(
         <div>
-            <Home />
+            <Home {...props} />
         </div>
     )
 }
