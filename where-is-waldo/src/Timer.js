@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const Timer = () => {
+const Timer = (props) => {
     const [seconds, setSeconds] = useState(1);
     const [minutes, setMinutes] = useState(0);
     const [addZero, setAddZero] = useState(true);
+    const [stop, setStop] = useState(false);
 
     useEffect(() => {
-        const TimerInt = seconds > 0 && setInterval(() => {
+        const TimerInt = seconds > 0 && !props.stop && setInterval(() => {
             if(seconds / 9 == 1){
                 setAddZero(false);
             }
