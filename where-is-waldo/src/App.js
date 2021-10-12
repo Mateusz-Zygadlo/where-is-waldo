@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Waldo from './waldo.png';
+import Waldo from './Wheres-waldo-wally-google-maps-380.webp';
 import './App.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
@@ -38,11 +38,14 @@ const App = () => {
   }
 
   const finalFunction = (e) => {
+    console.log('x: ', Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100));
+    console.log('y: ', Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100));
+    
     const xPos = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
     const yPos = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100);
 
-    setPositionXImg(e.clientX);
-    setPositionYImg(e.clientY);
+    setPositionXImg(e.nativeEvent.offsetX);
+    setPositionYImg(e.nativeEvent.offsetY);
 
     if(e.target.className == 'Waldo'){
       return;
@@ -67,8 +70,8 @@ const App = () => {
 
   const clickBtn = (e) => {
     if(e.target.className == 'Waldo'){
-      if(positionX > 46 && positionX < 51){
-        if(positionY > 13 && positionY < 36){
+      if(positionX > 47 && positionX < 49){
+        if(positionY > 63 && positionY < 73){
           setWinner(true);
           return;
         }
@@ -78,27 +81,20 @@ const App = () => {
     return false;
   }
 
-  const xAndY = (e) => {
-    const xPos = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100);
-    const yPos = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100);
-
-    console.log('x', xPos, 'y', yPos);
-  }
-
   return(
     <div className={winner ? 'winnerBackground' : null}>
       {winner ? <div className="winner">You are winner</div> : 
         <div>
         <Timer />
           <div className="bg">
-            <img src={Waldo} alt="Nature" className="responsive" onClick={(e)=>{finalFunction(e); xAndY(e)}} />
-            <div className={visiblityMode ? 'visiblity' : 'absolute'} style={{top: positionYImg, left: positionXImg}}>
+            <img src={Waldo} alt="Nature" className="responsive" onClick={(e)=>{finalFunction(e)}} />
+            <div className={visiblityMode ? 'visiblityClass' : 'absolute'} style={{top: positionYImg, left: positionXImg}}>
               <div className="Waldo" onClick={(e)=>{clickBtn(e)}}>Waldo</div>
               <div onClick={(e)=>{clickBtn(e)}}>Object 2</div>
               <div onClick={(e)=>{clickBtn(e)}}>Element 3</div>
             </div>
           </div>
-          </div>
+        </div>
       }
     </div>
   )

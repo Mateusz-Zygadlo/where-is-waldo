@@ -13,7 +13,8 @@ body{
     background-color: black;
 }
 .responsive {
-    max-width: 100%;
+    width: 100%;
+    height: auto;
 }
 .winner{
     width: 500px;
@@ -58,4 +59,7 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 40px;
+}
+.visiblityClass{
+    visibility: hidden;
 }
