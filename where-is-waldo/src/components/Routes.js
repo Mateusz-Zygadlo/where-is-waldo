@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import GamePage from './pages/GamePage';
+import ResultPage from './pages/ResultPage';
 
 const Routes = () => {
   const [stop, setStop] = useState(false);
@@ -71,6 +72,12 @@ const Routes = () => {
                   setWinnerNicknameFunc={setWinnerNickname}
                   winnerNickname={winnerNickname} />
             )} />
+        <Route 
+            exact
+            path='/results'
+            render={() => (
+              <ResultPage />
+            )}  />
       </Switch>
     </BrowserRouter>
   );
