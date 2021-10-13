@@ -36,7 +36,8 @@ const App = (props) => {
                         minutes={props.minutes} 
                         addZero={props.addZero} 
                         setWinnerNicknameFunc={props.setWinnerNicknameFunc} 
-                        winnerNickname={props.winnerNickname} /> : 
+                        winnerNickname={props.winnerNickname}
+                        setResultArrFunc={props.setResultArrFunc}  /> : 
         <div>
           <NavBar {...props} />
           <div className="bg">

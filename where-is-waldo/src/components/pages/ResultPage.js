@@ -1,9 +1,9 @@
 import React from 'react';
 import Results from '../Results';
 
-const ResultPage = () => {
+const ResultPage = (props) => {
     return(
-        <Results />
+        <Results {...props} />
     )
 }
 

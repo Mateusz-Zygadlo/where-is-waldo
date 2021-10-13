@@ -12,6 +12,7 @@ const Home = (props) => {
                     <div className="gamePlace">Beach</div>
                 </div>
             </Link>
+            <button className="checkResults"><Link to='/results'>check result page</Link></button>
         </div>
     )
 }
