@@ -244,6 +244,9 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    word-break: break-word;
+    text-align: center;
+
 }
 .checkResults{
     padding: 6px 10px;
