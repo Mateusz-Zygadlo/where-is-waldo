@@ -31,7 +31,12 @@ const App = (props) => {
 
   return(
     <div>
-      {props.winner ? <WinnerPage seconds={props.seconds} minutes={props.minutes} addZero={props.addZero} /> : 
+      {props.winner ? <WinnerPage 
+                        seconds={props.seconds} 
+                        minutes={props.minutes} 
+                        addZero={props.addZero} 
+                        setWinnerNicknameFunc={props.setWinnerNicknameFunc} 
+                        winnerNickname={props.winnerNickname} /> : 
         <div>
           <NavBar {...props} />
           <div className="bg">

@@ -9,6 +9,7 @@ const Routes = () => {
   const [minutes, setMinutes] = useState(0);
   const [addZero, setAddZero] = useState(true);
   const [winner, setWinner] = useState(false);
+  const [winnerNickname, setWinnerNickname] = useState('');
 
   const reset = () => {
     setSecondsFunc(1);
@@ -16,6 +17,11 @@ const Routes = () => {
     setAddZeroFunc(true);
     setWinnerFunc(false);
     setStopFunc(false);
+    setWinnerNickname('');
+  }
+
+  const setWinnerNicknameFunc = (value) => {
+    setWinnerNickname(value);
   }
 
   const setSecondsFunc = (value) => {
@@ -61,7 +67,9 @@ const Routes = () => {
                   minutes={minutes}
                   addZero={addZero}
                   stop={stop}
-                  setStopFunc={setStopFunc} />
+                  setStopFunc={setStopFunc}
+                  setWinnerNicknameFunc={setWinnerNickname}
+                  winnerNickname={winnerNickname} />
             )} />
       </Switch>
     </BrowserRouter>
